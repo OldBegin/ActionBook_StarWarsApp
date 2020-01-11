@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
 import Screens from './Screens';
+import SkinStyle from './StyleContainer';
 
 export default class People extends Component {
   constructor(props) {
@@ -10,7 +11,15 @@ export default class People extends Component {
   }
 
   static navigationOptions = {
-    title: 'People...',
+    headerTitle: (
+      <Text style={{color: 'white', fontSize: 30, textAlign: 'center'}}>
+        People
+      </Text>
+    ),
+    headerStyle: {
+      backgroundColor: 'black',
+      height: 110,
+    },
   };
 
   _navigateTo = screenName => {
@@ -19,13 +28,13 @@ export default class People extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <SkinStyle>
         <TouchableOpacity
           onPress={() => this._navigateTo(Screens.StarWars)}
           style>
           <Text style={styles.text}>People</Text>
         </TouchableOpacity>
-      </View>
+      </SkinStyle>
     );
   }
 }
@@ -39,5 +48,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 20,
+    color: 'white',
   },
 });

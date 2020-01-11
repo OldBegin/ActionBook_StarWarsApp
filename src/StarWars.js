@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {View, StyleSheet, Text, TouchableOpacity} from 'react-native';
 
-import StyleContainer from './StyleContainer';
+import SkinStyle from './StyleContainer';
 import Screens from './Screens';
 
 export default class StarWars extends Component {
@@ -11,8 +11,12 @@ export default class StarWars extends Component {
   }
 
   static navigationOptions = {
-    headerTitle: StarWars,
-    headerStyle: {color: 'white', backgroundColor: 'black', height: 110},
+    headerTitle: (
+      <Text style={{color: 'white', fontSize: 30, textAlign: 'center'}}>
+        Starwars
+      </Text>
+    ),
+    headerStyle: {backgroundColor: 'black', height: 110},
   };
   // 스크린이름을 문자로 받아서 각 해당 스크린으로 네비게이션 하는 범용 메소드
   _navigateTo = screenName => {
@@ -20,13 +24,13 @@ export default class StarWars extends Component {
   };
 
   render() {
-    console.log(Screens.People);
+    console.log('in Starwars', Screens.People);
     return (
-      <View style={styles.container}>
+      <SkinStyle>
         <TouchableOpacity onPress={() => this._navigateTo(Screens.People)}>
           <Text style={styles.text}>StarWars</Text>
         </TouchableOpacity>
-      </View>
+      </SkinStyle>
     );
   }
 }
@@ -40,5 +44,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: 'center',
     fontSize: 20,
+    color: 'white',
   },
 });
